@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <random>
 
 // Make code easier to type with "using namespace"
 using namespace sf;
@@ -14,10 +15,36 @@ int main()
     // Create a video mode object
 	VideoMode vm(1920, 1080);
 	// Create and open a window for the game
-	RenderWindow window(vm, "Timber Game!!", Style::Default);
+	RenderWindow window(vm, "Chaos Game!!", Style::Default);
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
+
+    // load font and return message if the font fails to load properly
+    Font font;
+    if (!font.loadFromFile("C:/Game Design/Fonts/ARCADECLASSIC.TTF")) {
+        cout << "Error with font" << endl;
+        return EXIT_FAILURE;
+    }
+    
+    // output instructions for the user
+    Text instructions;
+    instructions.setFont(font);
+    instructions.setCharacterSize(20);
+    instructions.setFillColor(Color::White);
+    instructions.setPosition(10.f, 10.f);
+    instructions.setString("Click on any three points to create your triangle");
+
+    Text fourth_point;
+    fourth_point.setFont(font);
+    fourth_point.setCharacterSize(20);
+    fourth_point.setFillColor(Color::White);
+    fourth_point.setPosition(10.f, 550.f);
+    fourth_point.setString("Click on any fourth point to begin the chaos");
+
+    // how do i choose vertices at random and how do i manipulate them to get half the distance between vertex and current positon
+
+
 
 	while (window.isOpen())
 	{
@@ -50,41 +77,49 @@ int main()
                     {
                         ///fourth click
                         ///push back to points vector
+                        points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
                     }
                 }
             }
         }
-        if (Keyboard::isKeyPressed(Keyboard::Escape))
-		{
-			window.close();
-		}
-        /*
-		****************************************
-		Update
-		****************************************
-		*/
+        window.clear();
 
-        if(points.size() > 0)
+        if (Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
+
+        // Draw vertices
+        for (int i = 0; i < vertices.size(); i++)
+        {
+            CircleShape vertexShape(5);
+            vertexShape.setPosition(vertices[i]);
+            vertexShape.setFillColor(Color::Blue);
+            window.draw(vertexShape);
+        }
+
+        if (points.size() > 0)
         {
             ///generate more point(s)
             ///select random vertex
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
+            
         }
 
-        /*
-		****************************************
-		Draw
-		****************************************
-		*/
-        window.clear();
-        for(int i = 0; i < vertices.size(); i++)
+        // Draw points
+        for (int i = 0; i < points.size(); i++)
         {
-            RectangleShape rect(Vector2f(10,10));
-            rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
-            rect.setFillColor(Color::Blue);
-            window.draw(rect);
+            CircleShape pointShape(2);
+            pointShape.setPosition(points[i]);
+            pointShape.setFillColor(Color::Yellow);
+            window.draw(pointShape);
         }
+
+        window.draw(instructions);
+        window.draw(fourth_point);
         window.display();
     }
+
+    return 0;
 }

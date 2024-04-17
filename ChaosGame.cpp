@@ -72,7 +72,7 @@ int main()
                     if (vertices.size() < 3)
                     {
                         vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
-                        
+
                     }
                     else if (points.size() == 0)
                     {
@@ -102,53 +102,33 @@ int main()
         // Draw points
         for (int i = 0; i < points.size(); i++)
         {
-            CircleShape pointShape(2);
+            CircleShape pointShape(1);
             pointShape.setPosition(points[i]);
             pointShape.setFillColor(Color::Yellow);
             window.draw(pointShape);
 
-            //game works up to this point where attempt to duplicate points is made
-            // 
-            // vertices.at(0) is for testing purposes to create a single duplicate point. should be a random vertex
-            // 
-            //points.push_back(Vector2f((vertices.at(0).x + points.at(i).x) / 2.0, (vertices.at(0).y + points.at(i).y) / 2.0));
-            //pointShape.setPosition(points.back());
-            //window.draw(pointShape);
         }
-        if (points.size() > 0)
-        //for (int i = 0; i < points.size(); i++) 
-        {
-            ///generate more point(s)
-            ///select random vertex
-            ///calculate midpoint between random vertex and the last point in the vector
-            ///push back the newly generated coord.
-            /// 
-            float vert_x;
-            float vert_y;
-            float cp_x;
-            float cp_y;
-            float mid_x;
-            float mid_y;
-            int blah = 0;
-            // using vertex(0) for testing and first point only. implement random vertex later
-            // get a second point first, then add more points
-            // vertices[rand() % 3].y????
-            vert_x = vertices[blah].x;
-            vert_y = vertices[blah].y;
-            cp_x = points[blah].x;
-            cp_y = points[blah ].y;
-            mid_x = (vert_x + cp_x) / 2.0;
-            mid_y = (vert_y + cp_y) / 2.0;
 
+        if (points.size() > 0 && points.size() < 5001)
+        {
+            // Choose a random vertex
+            int rand_vertex = rand() % vertices.size();
+            // Calculate midpoint between the random vertex and the last point in the vector
+            float mid_x = (vertices[rand_vertex].x + points.back().x) / 2.0;
+            float mid_y = (vertices[rand_vertex].y + points.back().y) / 2.0;
+            // Push back the newly generated coordinate
             points.push_back(Vector2f(mid_x, mid_y));
-            CircleShape pointShape(2);
-            pointShape.setPosition(points[blah+1]);
+            // Draw the newly generated point
+            CircleShape pointShape(1);
+            pointShape.setPosition(Vector2f(mid_x, mid_y));
             pointShape.setFillColor(Color::Yellow);
             window.draw(pointShape);
-
-
+            if (points.size() % 50 == 0) {
+                window.clear();
+            }
         }
 
+        
         window.draw(instructions);
         window.draw(fourth_point);
         window.display();

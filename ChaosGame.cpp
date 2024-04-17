@@ -13,9 +13,9 @@ using namespace std;
 int main()
 {
     // Create a video mode object
-	VideoMode vm(1920, 1080);
-	// Create and open a window for the game
-	RenderWindow window(vm, "Chaos Game!!", Style::Default);
+    VideoMode vm(1920, 1080);
+    // Create and open a window for the game
+    RenderWindow window(vm, "Chaos Game!!", Style::Default);
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
@@ -26,7 +26,7 @@ int main()
         cout << "Error with font" << endl;
         return EXIT_FAILURE;
     }
-    
+
     // output instructions for the user
     Text instructions;
     instructions.setFont(font);
@@ -46,20 +46,20 @@ int main()
 
 
 
-	while (window.isOpen())
-	{
+    while (window.isOpen())
+    {
         /*
-		****************************************
-		Handle the players input
-		****************************************
-		*/
+        ****************************************
+        Handle the players input
+        ****************************************
+        */
         Event event;
-		while (window.pollEvent(event))
-		{
+        while (window.pollEvent(event))
+        {
             if (event.type == Event::Closed)
             {
-				// Quit the game when the window is closed
-				window.close();
+                // Quit the game when the window is closed
+                window.close();
             }
             if (event.type == sf::Event::MouseButtonPressed)
             {
@@ -69,11 +69,12 @@ int main()
                     std::cout << "mouse x: " << event.mouseButton.x << std::endl;
                     std::cout << "mouse y: " << event.mouseButton.y << std::endl;
 
-                    if(vertices.size() < 3)
+                    if (vertices.size() < 3)
                     {
                         vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
+                        
                     }
-                    else if(points.size() == 0)
+                    else if (points.size() == 0)
                     {
                         ///fourth click
                         ///push back to points vector
@@ -98,15 +99,6 @@ int main()
             window.draw(vertexShape);
         }
 
-        if (points.size() > 0)
-        {
-            ///generate more point(s)
-            ///select random vertex
-            ///calculate midpoint between random vertex and the last point in the vector
-            ///push back the newly generated coord.
-            
-        }
-
         // Draw points
         for (int i = 0; i < points.size(); i++)
         {
@@ -114,6 +106,47 @@ int main()
             pointShape.setPosition(points[i]);
             pointShape.setFillColor(Color::Yellow);
             window.draw(pointShape);
+
+            //game works up to this point where attempt to duplicate points is made
+            // 
+            // vertices.at(0) is for testing purposes to create a single duplicate point. should be a random vertex
+            // 
+            //points.push_back(Vector2f((vertices.at(0).x + points.at(i).x) / 2.0, (vertices.at(0).y + points.at(i).y) / 2.0));
+            //pointShape.setPosition(points.back());
+            //window.draw(pointShape);
+        }
+        if (points.size() > 0)
+        //for (int i = 0; i < points.size(); i++) 
+        {
+            ///generate more point(s)
+            ///select random vertex
+            ///calculate midpoint between random vertex and the last point in the vector
+            ///push back the newly generated coord.
+            /// 
+            float vert_x;
+            float vert_y;
+            float cp_x;
+            float cp_y;
+            float mid_x;
+            float mid_y;
+            int blah = 0;
+            // using vertex(0) for testing and first point only. implement random vertex later
+            // get a second point first, then add more points
+            // vertices[rand() % 3].y????
+            vert_x = vertices[0].x;
+            vert_y = vertices[0].y;
+            cp_x = points[0].x;
+            cp_y = points[0].y;
+            mid_x = (vert_x + cp_x) / 2.0;
+            mid_y = (vert_y + cp_y) / 2.0;
+
+            points.push_back(Vector2f(mid_x, mid_y));
+            CircleShape pointShape(2);
+            pointShape.setPosition(points[1]);
+            pointShape.setFillColor(Color::Yellow);
+            window.draw(pointShape);
+
+
         }
 
         window.draw(instructions);

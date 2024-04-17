@@ -39,8 +39,16 @@ int main()
     fourth_point.setFont(font);
     fourth_point.setCharacterSize(20);
     fourth_point.setFillColor(Color::White);
-    fourth_point.setPosition(10.f, 550.f);
+    fourth_point.setPosition(10.f, 40.f);
     fourth_point.setString("Click on any fourth point to begin the chaos");
+
+    Text completion;
+    completion.setFont(font);
+    completion.setCharacterSize(20);
+    completion.setFillColor(Color::White);
+    completion.setPosition(10.f, 60.f);
+    completion.setString("Simulation complete");
+
 
     // how do i choose vertices at random and how do i manipulate them to get half the distance between vertex and current positon
 
@@ -123,9 +131,9 @@ int main()
             pointShape.setPosition(Vector2f(mid_x, mid_y));
             pointShape.setFillColor(Color::Yellow);
             window.draw(pointShape);
-            if (points.size() % 50 == 0) {
-                window.clear();
-            }
+        }
+        if (points.size() == 5001) {
+            window.draw(completion);
         }
 
         

@@ -133,16 +133,16 @@ int main()
             // using vertex(0) for testing and first point only. implement random vertex later
             // get a second point first, then add more points
             // vertices[rand() % 3].y????
-            vert_x = vertices[0].x;
-            vert_y = vertices[0].y;
-            cp_x = points[0].x;
-            cp_y = points[0].y;
+            vert_x = vertices[blah].x;
+            vert_y = vertices[blah].y;
+            cp_x = points[blah].x;
+            cp_y = points[blah ].y;
             mid_x = (vert_x + cp_x) / 2.0;
             mid_y = (vert_y + cp_y) / 2.0;
 
             points.push_back(Vector2f(mid_x, mid_y));
             CircleShape pointShape(2);
-            pointShape.setPosition(points[1]);
+            pointShape.setPosition(points[blah+1]);
             pointShape.setFillColor(Color::Yellow);
             window.draw(pointShape);
 

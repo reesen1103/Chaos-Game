@@ -22,7 +22,7 @@ int main()
 
     // load font and return message if the font fails to load properly
     Font font;
-    if (!font.loadFromFile("C:/Game Design/Fonts/ARCADECLASSIC.TTF")) {
+    if (!font.loadFromFile("ARCADECLASSIC.TTF")) {
         cout << "Error with font" << endl;
         return EXIT_FAILURE;
     }

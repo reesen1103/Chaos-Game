@@ -1,0 +1,24 @@
+﻿  ChaosGame.cpp
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,91): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,91): warning C4244:         with
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,91): warning C4244:         [
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,91): warning C4244:             T=float
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,91): warning C4244:         ]
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,70): warning C4244:         with
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,70): warning C4244:         [
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,70): warning C4244:             T=float
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(74,70): warning C4244:         ]
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,89): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,89): warning C4244:         with
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,89): warning C4244:         [
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,89): warning C4244:             T=float
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,89): warning C4244:         ]
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,68): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,68): warning C4244:         with
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,68): warning C4244:         [
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,68): warning C4244:             T=float
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(81,68): warning C4244:         ]
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(117,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\reese\source\repos\Chaos-Game\ChaosGame.cpp(118,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Chaos Game.vcxproj -> C:\Users\reese\source\repos\Chaos-Game\x64\Debug\Chaos Game.exe

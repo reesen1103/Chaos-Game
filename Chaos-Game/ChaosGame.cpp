@@ -41,18 +41,14 @@ int main()
     fourth_point.setFillColor(Color::White);
     fourth_point.setPosition(10.f, 40.f);
     fourth_point.setString("Click on any fourth point to begin the chaos");
-
+    
+    //output a completion message upon end of the simulation (see below)
     Text completion;
     completion.setFont(font);
     completion.setCharacterSize(20);
     completion.setFillColor(Color::White);
     completion.setPosition(10.f, 60.f);
     completion.setString("Simulation complete");
-
-
-    // how do i choose vertices at random and how do i manipulate them to get half the distance between vertex and current positon
-
-
 
     while (window.isOpen())
     {
@@ -116,12 +112,17 @@ int main()
             window.draw(pointShape);
 
         }
-
+        /// create points (limit of 5000 points for time and mercy on my CPU)
+        /// process of creating fractal is done in four steps
+        /// 1- randomly select a vertex
+        /// 2- move half the distance from current position to selected vertex
+        /// 3- plot and update current postion (will be last point in points vector)
+        /// 4- repeat
         if (points.size() > 0 && points.size() < 5001)
         {
             // Choose a random vertex
             int rand_vertex = rand() % vertices.size();
-            // Calculate midpoint between the random vertex and the last point in the vector
+            // Calculate midpoint between the random vertex and the last point in the points vector
             float mid_x = (vertices[rand_vertex].x + points.back().x) / 2.0;
             float mid_y = (vertices[rand_vertex].y + points.back().y) / 2.0;
             // Push back the newly generated coordinate
